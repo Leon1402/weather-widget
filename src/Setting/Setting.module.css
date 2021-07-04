@@ -1,0 +1,20 @@
+.city {
+    display: flex;
+    background-color: lightgray;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid red;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+}
+
+.burger {
+    display: inline-block;
+    margin-right: 20px;
+    padding: 10px;
+    border: 1px solid red;
+}
