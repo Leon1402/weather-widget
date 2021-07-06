@@ -6,6 +6,7 @@ import {
 } from 'react-sortable-hoc';
 import styles from './Setting.module.css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const DragHandle = sortableHandle(() => <span className={styles.burger}></span>);
 
@@ -15,7 +16,7 @@ const SortableItem = sortableElement(({ value, deleteCity }) => (
       <DragHandle />
       {value}
     </div>
-    <button onClick={() => {deleteCity(value)}}>X</button>
+    <button className={styles.deleteCity} onClick={() => {deleteCity(value)}}>X</button>
   </li>
 ));
 
@@ -23,7 +24,7 @@ const SortableContainer = sortableContainer(({ children }) => {
   return <ul>{children}</ul>;
 });
 
-export const Setting = ({cities, setCities, isSettingOpen}) => {
+export const Setting = ({cities, setCities}) => {
   const [value, setValue] = useState('')
   const inputHandler = (e) => {
     setValue(e.currentTarget.value)
@@ -41,12 +42,11 @@ export const Setting = ({cities, setCities, isSettingOpen}) => {
   const onSortEnd = ({ oldIndex, newIndex }) => {
     setCities(arrayMove(cities, oldIndex, newIndex))
   };
-  const settingOpen = `${styles.setting} ${styles.settingOpen}`
 
   return (
-    <div className={isSettingOpen ? settingOpen : styles.setting}>
+    <div className={styles.setting}>
       <h2 className={styles.title}>Settings</h2>
-      <button className={styles.close}>X</button>
+      <Link to='/' className={styles.close}>X</Link>
       <SortableContainer onSortEnd={onSortEnd} useDragHandle>
         {cities.map((value, index) => (
           <SortableItem key={`item-${value}`} index={index} value={value} deleteCity={deleteCity}/>

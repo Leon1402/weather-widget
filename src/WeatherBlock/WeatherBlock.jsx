@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { usePosition } from '../hooks/usePosition';
 import { useWeather } from '../hooks/useWeather';
 import { getDewPoint } from '../utils/getDewPoint';
 import { getTemp } from '../utils/getTemp';
